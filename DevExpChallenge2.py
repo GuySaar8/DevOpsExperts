@@ -215,7 +215,7 @@ elif a>b:
         if i%c==0:
             print(i, i/c)
 else:
-    print(a, "and", b,"is the same value")
+    print(a, "and", b,"are the same value")
 
 
 
