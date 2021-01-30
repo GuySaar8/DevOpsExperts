@@ -28,7 +28,8 @@ finally:
 """
  we have less control over the script and may 
  enconter an error that we need to invastage.
- we should be more spesific when excepting an "error"
+ we should be more spesific when we use the except
+ block to catch an "error"
  
 """
 
@@ -36,7 +37,10 @@ finally:
 
 """
 except IOError:
-    catch was changed to OSError and catches the fulling:
+    IOError Exception. It is an error raised when an input/output operation fails, 
+    such as the print statement or the open() function when trying to open a file 
+    that does not exist. It is also raised for operating system-related errors
+    
     Changed in version 3.3: EnvironmentError, IOError, 
     WindowsError, socket.error, select.error and mmap.error have been 
     merged into OSError, and the constructor may return a subclass.
