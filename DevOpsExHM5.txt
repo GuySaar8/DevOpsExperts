@@ -1,0 +1,323 @@
+
+1. 
+Started by user guy
+Running as SYSTEM
+Building on master in workspace /var/lib/jenkins/workspace/HM5
+[HM5] $ /bin/bash /tmp/jenkins8802876021827747543.sh
+Finished: SUCCESS
+
+Execute shell command:
+#!/bin/bash
+echo "Guy Saar" > /home/guy/Desktop/my_name.txt
+
+2.
+Started by user guy
+Running as SYSTEM
+Building on master in workspace /var/lib/jenkins/workspace/HM5
+[HM5] $ /bin/bash /tmp/jenkins5942646171322653728.sh
+Guy Saar
+Finished: SUCCESS
+
+Execute shell command:
+#!/bin/bash
+echo "Guy Saar" > /home/guy/Desktop/my_name.txt
+cat /home/guy/Desktop/my_name.txt
+
+
+3. 
+Started by user guy
+Running as SYSTEM
+Building on master in workspace /var/lib/jenkins/workspace/HM5
+[HM5] $ /bin/bash /tmp/jenkins141315587602076264.sh
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sda1        30G  7.3G   21G  26% /
+udev            971M     0  971M   0% /dev
+Finished: SUCCESS
+
+Execute shell command:
+#!/bin/bash
+df -h /dev/sda1 /dev/sda
+
+
+4. 
+Started by user guy
+Running as SYSTEM
+Building on master in workspace /var/lib/jenkins/workspace/HM5
+[HM5] $ /bin/bash /tmp/jenkins2253493609129441005.sh
+Finished: SUCCESS
+
+Execute shell command:
+#!/bin/bash
+mv /home/guy/Desktop/my_name.txt /home/guy/Desktop/new_folder/my_name.txt 
+
+5.
+used build trigers -
+Build periodically
+schedule
+0 8 * * * 
+
+6. 
+# used blue ocean to simplify working with jenkins files
+pipeline {
+  agent any
+  stages {
+    stage('Create File') {
+      steps {
+        sh '''
+echo "Guy Saar" > /home/guy/Desktop/my_name.txt
+'''
+      }
+    }
+
+    stage('Read File') {
+      steps {
+        sh 'cat /home/guy/Desktop/my_name.txt'
+      }
+    }
+
+    stage('Check Disk Space') {
+      steps {
+        sh 'df -h /dev/sda1 /dev/sda'
+      }
+    }
+
+    stage('Move File') {
+      steps {
+        sh '''mv /home/guy/Desktop/my_name.txt /home/guy/Desktop/new_folder/my_name.txt 
+'''
+      }
+    }
+
+  }
+}
+
+# console output -
+
+Started by user guy
+00:41:10 Connecting to https://api.github.com using administrator/****** (GitHub Access Token)
+Obtained Jenkinsfile from 17a09d85c1bec2d813413a1f29edf422c29407d0
+Running in Durability level: MAX_SURVIVABILITY
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/PiplineDevExHM5_main
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+The recommended git tool is: NONE
+using credential github
+ > git rev-parse --is-inside-work-tree # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/GuySaar8/sourcecontrolcourse.git # timeout=10
+Cleaning workspace
+ > git rev-parse --verify HEAD # timeout=10
+Resetting working tree
+ > git reset --hard # timeout=10
+ > git clean -fdx # timeout=10
+Fetching without tags
+Fetching upstream changes from https://github.com/GuySaar8/sourcecontrolcourse.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.17.1'
+using GIT_ASKPASS to set credentials GitHub Access Token
+ > git fetch --no-tags --progress -- https://github.com/GuySaar8/sourcecontrolcourse.git +refs/heads/main:refs/remotes/origin/main # timeout=10
+Checking out Revision 17a09d85c1bec2d813413a1f29edf422c29407d0 (main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 17a09d85c1bec2d813413a1f29edf422c29407d0 # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git branch -D main # timeout=10
+ > git checkout -b main 17a09d85c1bec2d813413a1f29edf422c29407d0 # timeout=10
+Commit message: "Second try"
+ > git rev-list --no-walk 17a09d85c1bec2d813413a1f29edf422c29407d0 # timeout=10
+Cleaning workspace
+ > git rev-parse --verify HEAD # timeout=10
+Resetting working tree
+ > git reset --hard # timeout=10
+ > git clean -fdx # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Create File)
+[Pipeline] sh
++ echo Guy Saar
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Read File)
+[Pipeline] sh
++ cat /home/guy/Desktop/my_name.txt
+Guy Saar
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Check Disk Space)
+[Pipeline] sh
++ df -h /dev/sda1 /dev/sda
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sda1        30G  7.3G   21G  27% /
+udev            971M     0  971M   0% /dev
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Move File)
+[Pipeline] sh
++ mv /home/guy/Desktop/my_name.txt /home/guy/Desktop/new_folder/my_name.txt
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+
+GitHub has been notified of this commit’s build result
+
+Finished: SUCCESS
+
+7.
+# jenkinsfile
+
+pipeline {
+  agent any
+  stages {
+    stage('Run Python Code') {
+      steps {
+        sh '/var/lib/jenkins/workspace/test/example.py Guy 05222222222 GalaxyNote9'
+      }
+    }
+
+  }
+}
+
+# ran a diffrent py file
+Started by user guy
+Replayed #1
+00:57:29 Connecting to https://api.github.com using administrator/****** (GitHub Access Token)
+Obtained Jenkinsfile from bccc406a5bd401f4ccdf8f2841eea6a288a20e52
+Running in Durability level: MAX_SURVIVABILITY
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/gitcourse_main
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+The recommended git tool is: NONE
+using credential github
+ > git rev-parse --is-inside-work-tree # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/GuySaar8/gitcourse.git # timeout=10
+Cleaning workspace
+ > git rev-parse --verify HEAD # timeout=10
+Resetting working tree
+ > git reset --hard # timeout=10
+ > git clean -fdx # timeout=10
+Fetching without tags
+Fetching upstream changes from https://github.com/GuySaar8/gitcourse.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.17.1'
+using GIT_ASKPASS to set credentials GitHub Access Token
+ > git fetch --no-tags --progress -- https://github.com/GuySaar8/gitcourse.git +refs/heads/main:refs/remotes/origin/main # timeout=10
+Checking out Revision bccc406a5bd401f4ccdf8f2841eea6a288a20e52 (main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f bccc406a5bd401f4ccdf8f2841eea6a288a20e52 # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git branch -D main # timeout=10
+ > git checkout -b main bccc406a5bd401f4ccdf8f2841eea6a288a20e52 # timeout=10
+Commit message: "Pipline"
+ > git rev-list --no-walk bccc406a5bd401f4ccdf8f2841eea6a288a20e52 # timeout=10
+Cleaning workspace
+ > git rev-parse --verify HEAD # timeout=10
+Resetting working tree
+ > git reset --hard # timeout=10
+ > git clean -fdx # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Run Python Code)
+[Pipeline] sh
++ /var/lib/jenkins/workspace/test/example.py Guy 05222222222 GalaxyNote9
+Number of arguments: 4 arguments.
+Argument List: ['/var/lib/jenkins/workspace/test/example.py', 'Guy', '05222222222', 'GalaxyNote9']
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+
+GitHub has been notified of this commit’s build result
+
+Finished: SUCCESS
+
+Challenge - 
+1.
+Started by an SCM change
+Running as SYSTEM
+Building remotely on Jenkins_Slave1 (slave1) in workspace /home/guy/workspace/git_gubTest
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --is-inside-work-tree # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/GuySaar8/sourcecontrolcourse.git # timeout=10
+Fetching upstream changes from https://github.com/GuySaar8/sourcecontrolcourse.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.17.1'
+ > git fetch --tags --progress -- https://github.com/GuySaar8/sourcecontrolcourse.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+Seen branch in repository origin/1.0.2
+Seen branch in repository origin/main
+Seen 2 remote branches
+ > git show-ref --tags -d # timeout=10
+Checking out Revision 0732f12d46a95f4a0983eaa4029056edb3946ea9 (origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 0732f12d46a95f4a0983eaa4029056edb3946ea9 # timeout=10
+Commit message: "Add files via upload"
+ > git rev-list --no-walk 21434d2db7ed21b2ca5a14b9d5d5aa7471180a7f # timeout=10
+[git_gubTest] $ /bin/sh -xe /tmp/jenkins2867951718779866514.sh
++ echo **************************
+**************************
++ echo Working with the version: */main
+Working with the version: */main
++ echo **************************
+**************************
+Finished: SUCCESS
+
+2. 
+Started by upstream project "pythonTest" build number 5
+originally caused by:
+ Started by user guy
+Running as SYSTEM
+Building remotely on Jenkins_Slave1 (slave1) in workspace /home/guy/workspace/git_gubTest
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --is-inside-work-tree # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/GuySaar8/sourcecontrolcourse.git # timeout=10
+Fetching upstream changes from https://github.com/GuySaar8/sourcecontrolcourse.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.17.1'
+ > git fetch --tags --progress -- https://github.com/GuySaar8/sourcecontrolcourse.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+Seen branch in repository origin/1.0.2
+Seen branch in repository origin/main
+Seen 2 remote branches
+ > git show-ref --tags -d # timeout=10
+Checking out Revision 0732f12d46a95f4a0983eaa4029056edb3946ea9 (origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 0732f12d46a95f4a0983eaa4029056edb3946ea9 # timeout=10
+Commit message: "Add files via upload"
+ > git rev-list --no-walk 0732f12d46a95f4a0983eaa4029056edb3946ea9 # timeout=10
+[git_gubTest] $ /bin/sh -xe /tmp/jenkins6642178818828812484.sh
++ echo **************************
+**************************
++ echo Working with the version: */main
+Working with the version: */main
++ echo **************************
+**************************
+Finished: SUCCESS
+
+
+
