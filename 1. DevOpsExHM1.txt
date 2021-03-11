@@ -1,0 +1,113 @@
+# A
+
+Create a program with the following:
+A.
+1. Create a variable name first with value 7.
+2. Create a variable name second with value 44.3.
+3. Print result of adding first to second.
+4. Print result of multiplying first by second
+5. Print result of dividing second by first
+
+
+#A1
+first = 7
+#A2
+second = 44.3
+#A3
+print (first + second)
+# 51.3
+#A4
+print (first / second)
+# 0.1580135440180587
+#A5
+print (second / first)
+# 6.328571428571428
+
+# B.
+What will be the values of a, b, c at the end?
+
+a=8
+a=17
+a=9
+b=6
+c=a+b
+b=c+a
+b=8
+
+# answers: a=9, b=8, c=15
+
+# C.
+Is there a difference between the two lines below? Why?
+name = “john”
+name= ‘john’
+
+What is the issue with the code below?
+my_number = 5+5
+print("result is: "+my_number)
+Suggest an edit.
+
+#c there is no difference - they both represent str just with a difference comma
+#c the issue is that you cannot add int and string (as shown by the console error - TypeError: can only concatenate str (not "int") to str)
+#c print("result is: ", + my_number) adding a , can solve the issue
+
+#D What will be the output?
+x =5
+y = 2.36
+print(x+int(y))
+
+7 - we set y = int, so we will receive whole number even though y is float. so instated of y=2.36, we get y=2.
+
+# E
+E.
+1. Create two variables name X and Y.
+2. Print “BIG” if X is bigger than Y .
+3. Print “small” if X is smaller than Y.
+
+x = 55
+y = 105
+
+if x < y:
+    print("small")
+if x > y:
+    print ("BIG")
+
+x = int(input("define X - please enter a number"))
+    if x > y:
+        print("Big")
+    else
+        print ("small")
+
+# F.
+1. Create a variable and initialize it with a
+number 1-4.
+2. Create 4 conditions (if-elif) which will check
+the variable.
+3. print the season name accordingly:
+- 1 = summer
+- 2 = winter
+- 3 = fall
+- 4 = spring
+
+x = "summer"
+y = "winter"
+z = "fall"
+w = "spring"
+
+f = int(input("define f - enter a number between 1-4"))
+if f == 1:
+      print(x)
+elif f == 2:
+    print(y)
+elif f == 3:
+    print(z)
+else:
+    print(w)
+
+# Challenge
+
+Fix the following code, without changing a or b
+a = 8
+b = "123:
+print(a+b)
+
+print (a+int(b))
